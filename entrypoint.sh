@@ -4,10 +4,10 @@
 export ANDROID_HOME=/root/android-sdk
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin
 
-ffmpeg -loop 1 -r 1 -i /automate/uploads/default.png -vf "scale=768:600" -pix_fmt yuv420p -f v4l2 $VIDEO_DEVICE &
+ffmpeg -loop 1 -r 1 -i /automate/uploads/default.png -vf "scale=768:600" -pix_fmt yuv420p -f v4l2 $VIDEO_DEVICE > /dev/null 2>&1 &
 sleep 5
 
-appium &
+appium > /dev/null 2>&1 &
 
 sleep 5
 # Start the emulator
@@ -27,10 +27,10 @@ echo "Mapped Webcam Index for $VIDEO_DEVICE: $WEBCAM_INDEX"
 # Start the emulator with dynamically mapped webcam
 if [ -n "$WEBCAM_INDEX" ]; then
     echo "Starting emulator with $WEBCAM_INDEX for $VIDEO_DEVICE."
-    $ANDROID_HOME/emulator/emulator -avd first -no-audio -gpu off -no-skin -camera-back $WEBCAM_INDEX -no-window -scale 0.25 -no-snapshot &
+    $ANDROID_HOME/emulator/emulator -avd first -no-audio -gpu off -no-skin -camera-back $WEBCAM_INDEX -no-window -scale 0.25 -no-snapshot > /dev/null 2>&1 &
 else
     echo "Webcam for $VIDEO_DEVICE not found. Starting emulator without webcam."
-    $ANDROID_HOME/emulator/emulator -avd first -no-audio -gpu off -no-skin -no-window -scale 0.25 -no-snapshot &
+    $ANDROID_HOME/emulator/emulator -avd first -no-audio -gpu off -no-skin -no-window -scale 0.25 -no-snapshot > /dev/null 2>&1 &
 fi
 
 echo "Emulator started."

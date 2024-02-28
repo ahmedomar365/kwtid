@@ -130,7 +130,7 @@ function replaceImageStream(defaultImagePath, uploadImagePath) {
         console.log('upload.png has been updated with default image.');
     });
 }
-async function keepSessionAlive(driver, interval = 60000) { // 5 minutes
+async function keepSessionAlive(driver, interval = 30000) { // 5 minutes
     setInterval(async () => {
         try {
             await driver.getCurrentActivity(); // Simple command to keep the session active
