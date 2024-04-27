@@ -157,8 +157,7 @@ An example of the response you should receive:
 - Implement access controls for API usage.
 
 
-Buy me a coffee 🙏
-https://www.buymeacoffee.com/ahmedomarar365
+
 
 
 ## License
